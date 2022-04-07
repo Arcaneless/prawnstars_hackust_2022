@@ -1,7 +1,6 @@
 import {DarkTheme, DefaultTheme, Theme} from '@react-navigation/native';
 import {Appearance} from 'react-native';
 import {Colors, Typography} from 'react-native-ui-lib';
-import {stores} from '../stores';
 
 const colors: DesignSystemColors = {
   primary: '#5383b8', // blue
@@ -28,15 +27,8 @@ const themes: Record<AppearanceMode, ThemeColors> = {
 
 // for more information - https://wix.github.io/react-native-ui-lib/foundation/style
 export const configureDesignSystem = (): void => {
-  const {ui} = stores;
-
-  if (ui.isSystemAppearance) {
-    Colors.loadColors(colors);
-    Colors.loadSchemes(themes);
-  } else {
-    Colors.loadColors({...colors, ...themes[ui.appearance]});
-    Colors.loadSchemes({dark: {}, light: {}});
-  }
+  Colors.loadColors(colors);
+  Colors.loadSchemes(themes);
 
   Typography.loadTypographies({
     section: {fontSize: 26, fontWeight: '600'},
@@ -44,20 +36,7 @@ export const configureDesignSystem = (): void => {
 };
 
 export const getThemeStatusBarStyle = (ca?: CurrentAppearance): StatusBarStyle => {
-  const {ui} = stores;
-
-  const current: CurrentAppearance = ca ?? {
-    value: ui.appearance,
-    system: ui.isSystemAppearance,
-  };
-
-  const appearance = current.system ? Appearance.getColorScheme() : current.value;
-  switch (appearance) {
-    case 'dark':
-      return 'light-content';
-    case 'light':
-      return 'dark-content';
-  }
+  return 'light-content';
 };
 
 export const getThemeStatusBarBGColor = (ca?: CurrentAppearance): string => {
@@ -65,13 +44,6 @@ export const getThemeStatusBarBGColor = (ca?: CurrentAppearance): string => {
 };
 
 export const getNavigationTheme = (ca?: CurrentAppearance): Theme => {
-  const {ui} = stores;
-
-  const current: CurrentAppearance = ca ?? {
-    value: ui.appearance,
-    system: ui.isSystemAppearance,
-  };
-
   // for more information - https://reactnavigation.org/docs/themes
   const MyDefaultTheme: Theme = {
     dark: false,
@@ -86,37 +58,5 @@ export const getNavigationTheme = (ca?: CurrentAppearance): Theme => {
     },
   };
 
-  const MyDarkTheme: Theme = {
-    dark: true,
-    colors: {
-      ...DarkTheme.colors,
-      primary: Colors.primary,
-      background: Colors.bgColor,
-      card: Colors.bgColor,
-      text: Colors.textColor,
-      // border: Colors.grey30,
-      // notification: Colors.primary,
-    },
-  };
-
-  const appearance = current.system ? Appearance.getColorScheme() : current.value;
-  switch (appearance) {
-    case 'dark':
-      return MyDarkTheme;
-    case 'light':
-      return MyDefaultTheme;
-  }
-
-  return DefaultTheme;
-};
-
-export const getHeaderBlurEffect = (ca?: CurrentAppearance): 'regular' | 'light' | 'dark' => {
-  const {ui} = stores;
-
-  const current: CurrentAppearance = ca ?? {
-    value: ui.appearance,
-    system: ui.isSystemAppearance,
-  };
-
-  return current.system ? 'regular' : current.value;
+  return MyDefaultTheme;
 };

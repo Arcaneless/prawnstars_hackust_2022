@@ -6,8 +6,6 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import {AppNavigator} from './src/app';
 import {configureDesignSystem} from './src/utils/designSystem';
-import {hydrateStores, StoresProvider} from './src/stores';
-import {initServices, ServicesProvider} from './src/services';
 
 LogBox.ignoreLogs(['Require']);
 
@@ -17,8 +15,6 @@ export default (): JSX.Element => {
   const startApp = useCallback(async () => {
     await SplashScreen.preventAutoHideAsync();
 
-    await hydrateStores();
-    await initServices();
     configureDesignSystem();
 
     setReady(true);
@@ -31,9 +27,7 @@ export default (): JSX.Element => {
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <StoresProvider>
-        <ServicesProvider>{ready ? <AppNavigator /> : null}</ServicesProvider>
-      </StoresProvider>
+      <AppNavigator />
     </GestureHandlerRootView>
   );
 };
