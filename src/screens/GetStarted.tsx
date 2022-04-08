@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { ImageBackground, useWindowDimensions } from 'react-native';
 import { Button, Text, View } from 'react-native-ui-lib';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export const GetStarted: React.FC = observer(() => {
   const { width, height } = useWindowDimensions();

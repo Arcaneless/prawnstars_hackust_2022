@@ -123,6 +123,10 @@ export const ShopBasicInfo: React.FC = observer(() => {
         }}
         borderRadius={8}
         bg-black
+        onPress={() => {
+          // @ts-ignore
+          navigation.navigate('ChooseYourLand');
+        }}
       />
     </View>
   );

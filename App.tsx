@@ -14,6 +14,8 @@ export default (): JSX.Element => {
 
   const startApp = useCallback(async () => {
     await SplashScreen.preventAutoHideAsync();
+    console.log('hi');
+    
 
     configureDesignSystem();
 
