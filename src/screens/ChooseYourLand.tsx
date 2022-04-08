@@ -16,6 +16,39 @@ export const ChooseYourLand: React.FC = observer(() => {
   const [openedSoc, setOpenedSoc] = useState(false);
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
 
+  const renderCard = () => {
+    return (
+      <TouchableOpacity
+        style={{
+          borderRadius: 8,
+          borderWidth: 1,
+          marginRight: 20,
+        }}
+      >
+        <Image
+          style={{
+            height: 180,
+            width: 180,
+          }}
+          source={require('../../assets/land.png')}
+        />
+
+        <View paddingV-5 paddingH-5>
+          <Text text70>MetaShop #1</Text>
+          <View row marginT-5>
+            <View row centerV padding-5 marginR-10 bg-red20 style={{ borderRadius: 7 }}>
+              <EvilIcons name="location" size={15} color="white" />
+              <Text white>25,47</Text>
+            </View>
+            <View padding-5 bg-grey40 style={{ borderRadius: 7 }}>
+              <Text white>Browse Map</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
       <View flex>
@@ -37,141 +70,18 @@ export const ChooseYourLand: React.FC = observer(() => {
 
         <ScrollView style={{ flex: 1 }}>
           <Text>Select a land on metaverse to place your NFT product.</Text>
-          <Text
-            marginT-20
-            marginB-10
-            style={{
-              fontSize: 24,
-            }}
-          >
+          <View row centerV marginT-10 marginB-10>
             <Ionicons name="checkbox-outline" size={24} color="green" />
-            Decentraland
-          </Text>
-          <ScrollView horizontal>
-            <TouchableOpacity
+            <Text
+              marginL-10
               style={{
-                borderRadius: 8,
-                borderWidth: 1,
+                fontSize: 24,
               }}
             >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #1</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    25,47
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #2</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    47, 69
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #3</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    125,32
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #4</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    174,247
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </ScrollView>
+              Decentraland
+            </Text>
+          </View>
+          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard())}</ScrollView>
 
           <Text
             marginT-20
