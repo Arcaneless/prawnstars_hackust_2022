@@ -38,9 +38,11 @@ export const Checkout: React.FC = observer(() => {
             metaverse can be changed afterwards.
           </Text>
 
-          <View row marginT-20 marginB-10>
-            <Text marginR-10>1X</Text>
-            <Text marginR-10>Basic Subscription Plan</Text>
+          <View row marginT-20 marginB-10 spread>
+            <View row>
+              <Text marginR-10>1X</Text>
+              <Text>Basic Subscription Plan</Text>
+            </View>
             <Text>$100</Text>
           </View>
         </ScrollView>
