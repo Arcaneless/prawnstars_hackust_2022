@@ -1,11 +1,14 @@
 import {createStackNavigator, StackNavigationOptions} from '@react-navigation/stack';
 import {useColorScheme} from 'react-native';
+import { ChooseYourLand } from './ChooseYourLand';
 import {GetStarted} from './GetStarted';
 import {ShopBasicInfo} from './ShopBasicInfo';
+import {MakeYourNFT} from './MakeYourNFT';
+import {Checkout} from './Checkout';
 
 // Describe your screens here
 export type Tabs = 'Main' | 'WIP' | 'Settings';
-export type Screen = 'GetStarted' | 'ShopBasicInfo';
+export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout';
 
 export type ModalProps = {
   ExampleModal: undefined;
@@ -49,6 +52,27 @@ const screens: ScreenLayouts = {
       ...stackDefaultOptions(),
     }),
   },
+  ChooseYourLand: {
+    name: 'ChooseYourLand',
+    component: ChooseYourLand,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
+  MakeYourNFT: {
+    name: 'MakeYourNFT',
+    component: MakeYourNFT,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
+  Checkout: {
+    name: 'Checkout',
+    component: Checkout,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
 };
 
 // Root Navigator
@@ -58,7 +82,7 @@ export const RootNavigator = () => {
 
   return (
     <RootStack.Navigator>
-      {[screens.GetStarted, screens.ShopBasicInfo].map(screen => {
+      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout].map(screen => {
         return (
           <RootStack.Screen
             key={screen.name}
