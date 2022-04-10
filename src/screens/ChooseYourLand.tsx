@@ -38,10 +38,12 @@ export const ChooseYourLand: React.FC = observer(() => {
           <View row marginT-5>
             <View row centerV padding-5 marginR-10 bg-red20 style={{ borderRadius: 7 }}>
               <EvilIcons name="location" size={15} color="white" />
-              <Text white>25,47</Text>
+              <Text text100 white>
+                {Math.floor(Math.random() * 500 + 1)}, {Math.floor(Math.random() * 500 + 1)}
+              </Text>
             </View>
             <View padding-5 bg-grey40 style={{ borderRadius: 7 }}>
-              <Text white>Browse Map</Text>
+              <Text text100 white>Browse Map</Text>
             </View>
           </View>
         </View>
@@ -83,141 +85,18 @@ export const ChooseYourLand: React.FC = observer(() => {
           </View>
           <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard())}</ScrollView>
 
-          <Text
-            marginT-20
-            marginB-10
-            style={{
-              fontSize: 24,
-            }}
-          >
+          <View row centerV marginT-10 marginB-10>
             <Ionicons name="checkbox-outline" size={24} color="green" />
-            Facebook Metaverse
-          </Text>
-          <ScrollView horizontal>
-            <TouchableOpacity
+            <Text
+              marginL-10
               style={{
-                borderRadius: 8,
-                borderWidth: 1,
+                fontSize: 24,
               }}
             >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #5</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    3,12
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #6</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    32, 94
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #7</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    410, 21
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                borderRadius: 8,
-                borderWidth: 1,
-              }}
-            >
-              <View>
-                <Image
-                  style={{
-                    height: 180,
-                    width: 180,
-                  }}
-                  source={require('../../assets/land.png')}
-                />
-              </View>
-              <View>
-                <Text text50>MetaShop #8</Text>
-              </View>
-              <View row>
-                <View padding-5 bg-red20 style={{ borderRadius: 10 }}>
-                  <Text>
-                    <EvilIcons name="location" size={15} color="black" />
-                    15, 200
-                  </Text>
-                </View>
-                <View padding-10 bg-grey40 style={{ borderRadius: 10 }}>
-                  <Text>Browse Map</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </ScrollView>
+              Facebook Metaverse
+            </Text>
+          </View>
+          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard())}</ScrollView>
         </ScrollView>
       </View>
 
