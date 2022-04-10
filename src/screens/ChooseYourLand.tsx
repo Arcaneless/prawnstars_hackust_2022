@@ -18,7 +18,7 @@ export const ChooseYourLand: React.FC = observer(() => {
 
   const renderCard = () => {
     return (
-      <TouchableOpacity
+      <TouchableWithoutFeedback
         style={{
           borderRadius: 8,
           borderWidth: 1,
@@ -43,11 +43,13 @@ export const ChooseYourLand: React.FC = observer(() => {
               </Text>
             </View>
             <View padding-5 bg-grey40 style={{ borderRadius: 7 }}>
-              <Text text100 white>Browse Map</Text>
+              <Text text100 white>
+                Browse Map
+              </Text>
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
     );
   };
 

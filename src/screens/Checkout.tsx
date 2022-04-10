@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Button, Incubator, Text, TouchableOpacity, View, RadioButton } from 'react-native-ui-lib';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { If } from '@kanzitelli/if-component';
+import { FontAwesome, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 
 export const Checkout: React.FC = observer(() => {
   const navigation = useNavigation();
@@ -36,8 +37,7 @@ export const Checkout: React.FC = observer(() => {
             Please confirm your information is correct, your shop information and shop venue on the
             metaverse can be changed afterwards.
           </Text>
-
-          <View row marginT-20 marginB-10 spread>
+          <View row marginT-40 marginB-10 spread>
             <View row>
               <Text marginR-10 grey>
                 1X
@@ -46,7 +46,6 @@ export const Checkout: React.FC = observer(() => {
             </View>
             <Text>$100</Text>
           </View>
-
           <View row marginB-10 spread>
             <View row>
               <Text marginR-10>1X</Text>
@@ -54,7 +53,6 @@ export const Checkout: React.FC = observer(() => {
             </View>
             <Text>$89</Text>
           </View>
-
           <View row marginB-10 spread>
             <View row>
               <Text marginR-10>1X</Text>
@@ -62,7 +60,6 @@ export const Checkout: React.FC = observer(() => {
             </View>
             <Text>$78</Text>
           </View>
-
           <View row marginB-10 spread>
             <View row>
               <Text marginR-10>1X</Text>
@@ -70,49 +67,156 @@ export const Checkout: React.FC = observer(() => {
             </View>
             <Text>$30</Text>
           </View>
-
-          <View row marginB-10 spread>
-            <View row>
-              <Text marginR-10>Total</Text>
-            </View>
+          <View row marginB-30 spread>
+            <Text marginR-10>Total</Text>
             <Text>$297</Text>
           </View>
-        </ScrollView>
 
-        <View>
-          <View row centerV>
-            <RadioButton value="First" />
-            <Text marginL-5>$297</Text>
-            <Text
+          <View>
+            <View row centerV marginB-10>
+              <RadioButton
+                style={{
+                  borderColor: 'black',
+                }}
+                value="Pay monthly"
+              />
+              <Text
+                style={{
+                  marginLeft: 5,
+                  fontSize: 20,
+                }}
+              >
+                $297
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 5,
+                  fontSize: 10,
+                  color: '#808080',
+                  alignSelf: 'flex-end',
+                }}
+              >
+                Paid monthly
+              </Text>
+            </View>
+            <View row centerV>
+              <RadioButton
+                style={{
+                  borderColor: 'black',
+                }}
+                value="Pay annually"
+              />
+              <Text
+                style={{
+                  fontSize: 20,
+                  marginLeft: 5,
+                  color: 'green',
+                }}
+              >
+                $3267, 9% off
+              </Text>
+              <Text
+                style={{
+                  marginLeft: 5,
+                  fontSize: 10,
+                  color: '#808080',
+                  alignSelf: 'flex-end',
+                }}
+              >
+                Paid annually
+              </Text>
+            </View>
+          </View>
+          <View>
+            <TouchableWithoutFeedback
               style={{
-                marginLeft: 5,
-                fontSize: 10,
-                color: '#808080',
+                borderRadius: 8,
+                borderWidth: 2,
+                marginRight: 20,
+                paddingVertical: 10,
+                paddingHorizontal: 10,
+                alignContent: 'center',
+                marginTop: 30,
               }}
             >
-              Paid monthly
-            </Text>
-          </View>
-          <View row centerV>
-            <RadioButton value="Second" />
-            <Text marginL-5>$3267, 9% off</Text>
-            <Text
+              <View row spread centerV>
+                <View row centerV>
+                  <FontAwesome name="credit-card" size={24} color="black" />
+                  <Text text70 marginL-15 centerV>
+                    Credit Card
+                  </Text>
+                </View>
+                <RadioButton
+                  style={{
+                    borderColor: 'black',
+                  }}
+                  value="Credit Card"
+                />
+              </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback
               style={{
-                marginLeft: 5,
-                fontSize: 10,
-                color: '#808080',
+                borderRadius: 8,
+                borderWidth: 2,
+                marginRight: 20,
+                paddingVertical: 10,
+                paddingHorizontal: 10,
+                alignContent: 'center',
+                marginTop: 10,
               }}
             >
-              Paid annually
-            </Text>
+              <View row spread>
+                <View row>
+                  <SimpleLineIcons name="paypal" size={24} color="black" />
+                  <Text text70 marginL-15 centerV>
+                    Paypal
+                  </Text>
+                </View>
+                <RadioButton
+                  style={{
+                    borderColor: 'black',
+                  }}
+                  value="Paypal"
+                />
+              </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback
+              style={{
+                borderRadius: 8,
+                borderWidth: 2,
+                marginRight: 20,
+                paddingVertical: 10,
+                paddingHorizontal: 10,
+                alignContent: 'center',
+                marginTop: 10,
+              }}
+            >
+              <View row spread>
+                <View row>
+                  <AntDesign name="apple-o" size={24} color="black" />
+                  <Text text70 marginL-15 centerV>
+                    Apple Pay
+                  </Text>
+                </View>
+                <RadioButton
+                  style={{
+                    borderColor: 'black',
+                  }}
+                  value="Apple Pay"
+                />
+              </View>
+            </TouchableWithoutFeedback>
           </View>
-        </View>
+        </ScrollView>
       </View>
 
       <Button
-        label="Next"
+        marginB-5
+        marginT-10
+        centerV
+        label="Checkout"
         labelStyle={{
-          fontSize: 18,
+          fontSize: 20,
         }}
         borderRadius={8}
         bg-black
@@ -121,6 +225,9 @@ export const Checkout: React.FC = observer(() => {
           navigation.navigate('MakeYourNFT');
         }}
       />
+      <Text marginB-20 green30>
+        You won't be charged yet
+      </Text>
     </View>
   );
 });
