@@ -9,7 +9,7 @@ import {Success} from './Success';
 
 // Describe your screens here
 export type Tabs = 'Main' | 'WIP' | 'Settings';
-export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout' | 'Success';
+export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout' | 'Success' ;
 
 export type ModalProps = {
   ExampleModal: undefined;
@@ -90,7 +90,7 @@ export const RootNavigator = () => {
 
   return (
     <RootStack.Navigator>
-      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout, screens.Success].map(screen => {
+      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout, screens.Success, ].map(screen => {
         return (
           <RootStack.Screen
             key={screen.name}

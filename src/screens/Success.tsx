@@ -18,32 +18,59 @@ export const Success: React.FC = observer(() => {
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
       <View flex>
-        <ScrollView style={{ flex: 1 }}>
-          <Text marginT-100 center text30 green30>
-            Success!
-          </Text>
-          <Image>
-            style=
-            {{
-              height: 180,
-              width: 180,
-            }}
-            source={require('../../assets/success.png')}
-          </Image>
-        </ScrollView>
+        <Text marginT-100 center text30 green30>
+          Success!
+        </Text>
+        <Image
+          style={{
+            alignSelf: 'center',
+            marginTop: 40,
+            height: 200,
+            width: 200,
+          }}
+          source={require('../../assets/success.png')}
+        />
+        <Text marginT-20 center>
+          Your first shop and product has been created on metaverse! Let's dive into the next
+          generation shopping experience!
+        </Text>
       </View>
-      <Button
-        label="Next"
-        labelStyle={{
-          fontSize: 18,
-        }}
-        borderRadius={8}
-        bg-black
+      <TouchableOpacity
         onPress={() => {
           // @ts-ignore
-          navigation.navigate('ChooseYourLand');
+          navigation.navigate('GetStarted');
         }}
-      />
+      >
+        <View
+          row
+          centerV
+          center
+          paddingV-10
+          marginH-50
+          style={{ borderRadius: 7, backgroundColor: '#32CD32' }}
+        >
+          <Text text70 white>
+            Explore Home
+          </Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity >
+        <View
+          row
+          centerV
+          center
+          paddingV-10
+          marginT-20
+          marginH-50
+          marginB-130
+          style={{ borderRadius: 7, backgroundColor: 'white', borderWidth: 1, borderColor: '#008000' }}
+        >
+          <Text text70 green40>
+            Checkout Metaverse Shop
+          </Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 });
