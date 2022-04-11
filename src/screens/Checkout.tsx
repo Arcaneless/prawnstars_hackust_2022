@@ -12,7 +12,8 @@ import { FontAwesome, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 export const Checkout: React.FC = observer(() => {
   const navigation = useNavigation();
 
-  const [isSelected, setSelection] = useState('Pay annually');
+  const [payType, setType] = useState('Pay annually');
+  const [payMethod, setMethod] = useState('Credit Card')
 
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
@@ -79,7 +80,7 @@ export const Checkout: React.FC = observer(() => {
                   borderColor: 'black',
                 }}
                 value="Pay monthly"
-                onPress={() => setSelection('Pay monthly')}
+                onPress={payType => setType('Pay monthly')}
               />
               <Text
                 style={{
@@ -106,7 +107,7 @@ export const Checkout: React.FC = observer(() => {
                   borderColor: 'black',
                 }}
                 value="Pay annually"
-                onPress={() => setSelection('Pay annually')}
+                onPress={payType => setType('Pay annually')}
               />
               <Text
                 style={{
@@ -130,7 +131,7 @@ export const Checkout: React.FC = observer(() => {
             </View>
           </View>
           <View>
-            <TouchableWithoutFeedback
+            <View
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
@@ -153,10 +154,11 @@ export const Checkout: React.FC = observer(() => {
                     borderColor: 'black',
                   }}
                   value="Credit Card"
+                  onPress={payMethod => setMethod('Credit Card')}
                 />
               </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
+            </View>
+            <View
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
@@ -179,10 +181,11 @@ export const Checkout: React.FC = observer(() => {
                     borderColor: 'black',
                   }}
                   value="Paypal"
+                  onPress={payMethod => setMethod('Paypal')}
                 />
               </View>
-            </TouchableWithoutFeedback>
-            <TouchableWithoutFeedback
+            </View>
+            <View
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
@@ -205,9 +208,10 @@ export const Checkout: React.FC = observer(() => {
                     borderColor: 'black',
                   }}
                   value="Apple Pay"
+                  onPress={payMethod => setMethod('Apple Pay')}
                 />
               </View>
-            </TouchableWithoutFeedback>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -216,6 +220,7 @@ export const Checkout: React.FC = observer(() => {
         onPress={() => {
           // @ts-ignore
           navigation.navigate('Success');
+          console.log({payMethod}, {payType});
         }}
       >
         <View row bg-black centerV center paddingV-10 style={{ borderRadius: 7 }}>
