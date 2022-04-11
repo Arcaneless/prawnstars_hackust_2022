@@ -1,23 +1,30 @@
-import {createStackNavigator, StackNavigationOptions} from '@react-navigation/stack';
-import {useColorScheme} from 'react-native';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import {
+  createBottomTabNavigator,
+  BottomTabNavigationOptions,
+} from '@react-navigation/bottom-tabs';
+import { useColorScheme } from 'react-native';
 import { ChooseYourLand } from './ChooseYourLand';
-import {GetStarted} from './GetStarted';
-import {ShopBasicInfo} from './ShopBasicInfo';
-import {MakeYourNFT} from './MakeYourNFT';
-import {Checkout} from './Checkout';
+import { GetStarted } from './GetStarted';
+import { ShopBasicInfo } from './ShopBasicInfo';
+import { MakeYourNFT } from './MakeYourNFT';
+import { Checkout } from './Checkout';
+import { Home } from './Home';
+import { FontAwesome } from '@expo/vector-icons';
+import { Search } from './Search';
+import { Statistics } from './Statistics';
+import { Ionicons } from '@expo/vector-icons';
+import { Settings } from './Settings';
 
 // Describe your screens here
-export type Tabs = 'Main' | 'WIP' | 'Settings';
-export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout';
-
-export type ModalProps = {
-  ExampleModal: undefined;
-};
-export type ScreenProps = {
-  Main: undefined;
-  Example: ExampleScreenProps;
-  Settings: undefined;
-} & ModalProps;
+export type Tabs = 'Home' | 'Search' | 'Statistics' | 'Settings';
+export type Screen =
+  | 'GetStarted'
+  | 'ShopBasicInfo'
+  | 'ChooseYourLand'
+  | 'MakeYourNFT'
+  | 'Checkout'
+  | 'BottomTab';
 
 type BaseScreenInfo = {
   name: string;
@@ -32,9 +39,74 @@ type ScreenLayouts = {
   [key in Screen]: ScreenInfo;
 };
 
+type BottomTabInfo = BaseScreenInfo & {
+  options: () => BottomTabNavigationOptions;
+};
+
+type BottomTabLayouts = {
+  [key in Tabs]: BottomTabInfo;
+};
+
 const stackDefaultOptions = (): StackNavigationOptions => ({
   headerShown: false,
 });
+
+const tabs: BottomTabLayouts = {
+  Home: {
+    name: 'Home',
+    component: Home,
+    options: () => ({
+      headerShown: false,
+      tabBarIcon: ({ color }) => <FontAwesome name="home" size={24} color={color} />,
+    }),
+  },
+  Search: {
+    name: 'Search',
+    component: Search,
+    options: () => ({
+      tabBarIcon: ({ color }) => <FontAwesome name="search" size={24} color={color} />,
+    }),
+  },
+  Statistics: {
+    name: 'Statistics',
+    component: Statistics,
+    options: () => ({
+      tabBarIcon: ({ color }) => <Ionicons name="ios-stats-chart" size={24} color={color} />,
+    }),
+  },
+  Settings: {
+    name: 'Settings',
+    component: Settings,
+    options: () => ({
+      tabBarIcon: ({ color }) => <Ionicons name="settings" size={24} color={color} />,
+    }),
+  },
+};
+
+const RootTab = createBottomTabNavigator();
+const BottomTab = () => {
+  useColorScheme();
+
+  return (
+    <RootTab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: 'black',
+        tabBarInactiveTintColor: 'grey',
+      }}
+    >
+      {[tabs.Home, tabs.Search, tabs.Statistics, tabs.Settings].map(screen => {
+        return (
+          <RootTab.Screen
+            key={screen.name}
+            name={screen.name}
+            component={screen.component}
+            options={screen.options()}
+          />
+        );
+      })}
+    </RootTab.Navigator>
+  );
+};
 
 // Screens
 const screens: ScreenLayouts = {
@@ -73,6 +145,13 @@ const screens: ScreenLayouts = {
       ...stackDefaultOptions(),
     }),
   },
+  BottomTab: {
+    name: 'BottomTab',
+    component: BottomTab,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
 };
 
 // Root Navigator
@@ -82,7 +161,14 @@ export const RootNavigator = () => {
 
   return (
     <RootStack.Navigator>
-      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout].map(screen => {
+      {[
+        screens.GetStarted,
+        screens.ShopBasicInfo,
+        screens.ChooseYourLand,
+        screens.MakeYourNFT,
+        screens.Checkout,
+        screens.BottomTab,
+      ].map(screen => {
         return (
           <RootStack.Screen
             key={screen.name}

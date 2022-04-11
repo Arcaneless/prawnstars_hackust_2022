@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { ImageBackground, useWindowDimensions } from 'react-native';
 import { Button, Text, View } from 'react-native-ui-lib';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export const GetStarted: React.FC = observer(() => {
   const { width, height } = useWindowDimensions();
@@ -40,7 +40,15 @@ export const GetStarted: React.FC = observer(() => {
           </Text>
         </View>
         <View marginH-30>
-          <Button borderRadius={8} label="Login" bg-black />
+          <Button
+            borderRadius={8}
+            label="Login"
+            bg-black
+            onPress={() => {
+              // @ts-ignore
+              navigation.navigate('BottomTab');
+            }}
+          />
           <Button
             marginT-15
             borderRadius={8}
