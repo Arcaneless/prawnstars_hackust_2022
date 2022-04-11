@@ -5,10 +5,11 @@ import {GetStarted} from './GetStarted';
 import {ShopBasicInfo} from './ShopBasicInfo';
 import {MakeYourNFT} from './MakeYourNFT';
 import {Checkout} from './Checkout';
+import {Success} from './Success';
 
 // Describe your screens here
 export type Tabs = 'Main' | 'WIP' | 'Settings';
-export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout';
+export type Screen = 'GetStarted' | 'ShopBasicInfo' | 'ChooseYourLand' | 'MakeYourNFT' | 'Checkout' | 'Success';
 
 export type ModalProps = {
   ExampleModal: undefined;
@@ -73,6 +74,13 @@ const screens: ScreenLayouts = {
       ...stackDefaultOptions(),
     }),
   },
+  Success: {
+    name: 'Success',
+    component: Success,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
 };
 
 // Root Navigator
@@ -82,7 +90,7 @@ export const RootNavigator = () => {
 
   return (
     <RootStack.Navigator>
-      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout].map(screen => {
+      {[screens.GetStarted, screens.ShopBasicInfo, screens.ChooseYourLand, screens.MakeYourNFT, screens.Checkout, screens.Success].map(screen => {
         return (
           <RootStack.Screen
             key={screen.name}

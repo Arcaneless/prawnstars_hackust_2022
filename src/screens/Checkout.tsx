@@ -12,7 +12,7 @@ import { FontAwesome, SimpleLineIcons, AntDesign } from '@expo/vector-icons';
 export const Checkout: React.FC = observer(() => {
   const navigation = useNavigation();
 
-  const [isSelected, setSelection] = useState(false);
+  const [isSelected, setSelection] = useState('Pay annually');
 
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
@@ -79,6 +79,7 @@ export const Checkout: React.FC = observer(() => {
                   borderColor: 'black',
                 }}
                 value="Pay monthly"
+                onPress={() => setSelection('Pay monthly')}
               />
               <Text
                 style={{
@@ -105,6 +106,7 @@ export const Checkout: React.FC = observer(() => {
                   borderColor: 'black',
                 }}
                 value="Pay annually"
+                onPress={() => setSelection('Pay annually')}
               />
               <Text
                 style={{
@@ -210,22 +212,26 @@ export const Checkout: React.FC = observer(() => {
         </ScrollView>
       </View>
 
-      <Button
-        marginB-5
-        marginT-10
-        centerV
-        label="Checkout"
-        labelStyle={{
-          fontSize: 20,
-        }}
-        borderRadius={8}
-        bg-black
+      <TouchableOpacity
         onPress={() => {
           // @ts-ignore
-          navigation.navigate('MakeYourNFT');
+          navigation.navigate('Success');
         }}
-      />
-      <Text marginB-20 green30>
+      >
+        <View row bg-black centerV center paddingV-10 style={{ borderRadius: 7 }}>
+          <AntDesign name="lock1" size={24} color="white" />
+          <Text
+            style={{
+              fontSize: 20,
+              color: 'white',
+              marginLeft: 5,
+            }}
+          >
+            Checkout
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <Text marginB-20 green30 marginT-10 text70>
         You won't be charged yet
       </Text>
     </View>
