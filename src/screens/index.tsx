@@ -11,6 +11,7 @@ import { MakeYourNFT } from './MakeYourNFT';
 import { Checkout } from './Checkout';
 import { Success } from './Success';
 import { Home } from './Home';
+import { NewCampaign } from './NewCampaign';
 import { FontAwesome } from '@expo/vector-icons';
 import { Search } from './Search';
 import { Statistics } from './Statistics';
@@ -26,7 +27,8 @@ export type Screen =
   | 'MakeYourNFT'
   | 'Checkout'
   | 'Success'
-  | 'BottomTab';
+  | 'BottomTab'
+  | 'NewCampaign';
 
 export type ModalProps = {
   ExampleModal: undefined;
@@ -165,6 +167,13 @@ const screens: ScreenLayouts = {
       ...stackDefaultOptions(),
     }),
   },
+  NewCampaign: {
+    name: 'NewCampaign',
+    component: NewCampaign,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
   BottomTab: {
     name: 'BottomTab',
     component: BottomTab,
@@ -189,6 +198,7 @@ export const RootNavigator = () => {
         screens.Checkout,
         screens.Success,
         screens.BottomTab,
+        screens.NewCampaign,
       ].map(screen => {
         return (
           <RootStack.Screen

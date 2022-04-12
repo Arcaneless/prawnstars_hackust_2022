@@ -38,7 +38,7 @@ export const Success: React.FC = observer(() => {
       <TouchableOpacity
         onPress={() => {
           // @ts-ignore
-          navigation.navigate('GetStarted');
+          navigation.navigate('BottomTab');
         }}
       >
         <View

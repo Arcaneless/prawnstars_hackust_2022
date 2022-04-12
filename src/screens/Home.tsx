@@ -1,20 +1,23 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Avatar, Image, Text, View } from 'react-native-ui-lib';
 import USDT from '../../assets/usdt.png';
 import CampaignImg from '../../assets/campaign.png';
 import { globalStyle } from '../styles/global';
-import { Fontisto } from '@expo/vector-icons';
+import { Fontisto, MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { ImageSourcePropType } from 'react-native';
+import { Dimensions, ImageSourcePropType } from 'react-native';
 import EveningDress from '../../assets/evening-dress.png';
 import ManSuit from '../../assets/man-suit.png';
 import decentraland from '../../assets/decentraland.png';
 import sandbox from '../../assets/sandbox.png';
+import { LineChart } from 'react-native-chart-kit';
 
 export const Home: React.FC = () => {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
 
   const renderHeader = (title: string) => (
     <View>
@@ -210,6 +213,10 @@ export const Home: React.FC = () => {
               globalStyle.card,
               { width: 200, justifyContent: 'center', alignItems: 'center', flex: 1 },
             ]}
+            onPress={() => {
+              // @ts-ignore
+              navigation.navigate('NewCampaign');
+            }}
           >
             <Fontisto name="plus-a" size={24} color="black" />
             <Text marginT-10 text80BO>
@@ -231,6 +238,56 @@ export const Home: React.FC = () => {
           {renderItemCard(EveningDress, 2, 1021, 'Evening Dress', 1200, 99)}
           {renderItemCard(ManSuit, 2, 1329, 'Man Suit', 898, 140)}
         </ScrollView>
+        {renderHeader('Statistics')}
+        <TouchableOpacity style={[globalStyle.card, { marginTop: 10, marginBottom: 20 }]}>
+          <View paddingH-20 paddingT-10 row spread>
+            <Text text65>Conversion Rate</Text>
+            <MaterialIcons
+              name="arrow-forward-ios"
+              size={28}
+              color="#D9D9D9"
+              onPress={() => {
+                if (navigation.canGoBack()) {
+                  navigation.goBack();
+                }
+              }}
+            />
+          </View>
+          <View center>
+            <LineChart
+              data={{
+                labels: ['15/3', '16/3', '17/3', '18/3', '19/3'],
+                datasets: [
+                  {
+                    data: [10, 30, 40, 60, 80],
+                  },
+                ],
+              }}
+              segments={2}
+              width={Dimensions.get('window').width - 65} // from react-native
+              height={200}
+              yAxisInterval={1} // optional, defaults to 1
+              yLabelsOffset={15}
+              chartConfig={{
+                backgroundGradientFromOpacity: 0,
+                backgroundGradientToOpacity: 0,
+                decimalPlaces: 0, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgb(0, 0, 0)`,
+                labelColor: (opacity = 1) => `rgba(150, 150, 150, ${opacity})`,
+
+                style: {
+                  borderRadius: 16,
+                  borderColor: 'black',
+                  borderWidth: 1,
+                },
+                propsForDots: {
+                  r: '4',
+                  fill: 'black',
+                },
+              }}
+            />
+          </View>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
