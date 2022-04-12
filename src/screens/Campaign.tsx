@@ -213,15 +213,13 @@ export const Campaign = () => {
           />
           <View row spread centerV>
             <Text text80R black>
-              People Participated: 12384
+              People Participated: 0
             </Text>
             <Text text80R black>
               25000
             </Text>
           </View>
-          <View marginV-5 width={'100%'} height={6} backgroundColor={'#DDDDDD'} br50>
-            <View width={'65%'} height={'100%'} backgroundColor={'black'} br50 />
-          </View>
+          <View marginV-5 width={'100%'} height={6} backgroundColor={'#DDDDDD'} br50></View>
           <View
             row
             style={{

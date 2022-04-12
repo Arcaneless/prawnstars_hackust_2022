@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,10 +14,13 @@ import ManSuit from '../../assets/man-suit.png';
 import decentraland from '../../assets/decentraland.png';
 import sandbox from '../../assets/sandbox.png';
 import { LineChart } from 'react-native-chart-kit';
+import { FlagContext } from '../../App';
+import Sing from '../../assets/sing.jpg';
 
 export const Home: React.FC = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const { flag } = useContext(FlagContext);
 
   const renderHeader = (title: string) => (
     <View>
@@ -25,7 +28,12 @@ export const Home: React.FC = () => {
     </View>
   );
 
-  const renderCampaignCard = () => {
+  const renderCampaignCard = (
+    image: ImageSourcePropType,
+    name: string,
+    text: string,
+    percentage: number,
+  ) => {
     return (
       <TouchableOpacity
         activeOpacity={0.6}
@@ -36,7 +44,7 @@ export const Home: React.FC = () => {
         }}
       >
         <Image
-          source={CampaignImg}
+          source={image}
           style={{
             width: '100%',
             height: 120,
@@ -49,20 +57,20 @@ export const Home: React.FC = () => {
           <Text color="#0085FF" text100>
             NFT + Offline
           </Text>
-          <Text text80BO>👗 💅🏻 Flashsale Campaign - Outfit of the day </Text>
+          <Text text80BO>{name}</Text>
           <Text text100L grey30 numberOfLines={2}>
-            Hi Shoppers, we are proudly launching our #OOTD Campaign! Shoot an OOTD with ....
+            {text}
           </Text>
           <View row spread centerV>
             <Text text100L black>
-              65%
+              {percentage}%
             </Text>
             <Text text100L black>
               25000
             </Text>
           </View>
           <View width={'100%'} height={3} backgroundColor={'#DDDDDD'} br40>
-            <View width={'65%'} height={'100%'} backgroundColor={'black'} br40 />
+            <View width={`${percentage}%`} height={'100%'} backgroundColor={'black'} br40 />
           </View>
           <View
             row
@@ -211,11 +219,23 @@ export const Home: React.FC = () => {
             paddingHorizontal: 20,
           }}
         >
-          {renderCampaignCard()}
+          {renderCampaignCard(
+            Sing,
+            '🎤 😌 Expired Campaign - Sing to your staff',
+            "Fellow shoppers, let's sing to your staff in metaverse, express your love and passion...",
+            100,
+          )}
+          {flag &&
+            renderCampaignCard(
+              CampaignImg,
+              '👗 💅🏻 Flashsale Campaign - Outfit of the day ',
+              'Hi Shoppers, we are proudly launching our #OOTD Campaign! Shoot an OOTD with ....',
+              0,
+            )}
           <TouchableOpacity
             style={[
               globalStyle.card,
-              { width: 200, justifyContent: 'center', alignItems: 'center', flex: 1 },
+              { width: 200, height: 220, justifyContent: 'center', alignItems: 'center', flex: 1 },
             ]}
             onPress={() => {
               // @ts-ignore

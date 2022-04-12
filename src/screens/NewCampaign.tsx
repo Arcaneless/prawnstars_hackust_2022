@@ -61,6 +61,7 @@ export const NewCampaign: React.FC = observer(() => {
               borderColor: '#d9d9d9',
             }}
             placeholder="Description..."
+            multiline={false}
           />
           <Text marginT-20 marginB-10 text70>
             Reward
@@ -125,7 +126,6 @@ export const NewCampaign: React.FC = observer(() => {
         onPress={() => {
           // @ts-ignore
           navigation.navigate('CampaignSuccess');
-
         }}
       />
     </View>
