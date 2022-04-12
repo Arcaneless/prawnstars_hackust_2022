@@ -16,7 +16,7 @@ export const ChooseYourLand: React.FC = observer(() => {
   const [openedSoc, setOpenedSoc] = useState(false);
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
 
-  const renderCard = () => {
+  const renderCard = (num:number) => {
     return (
       <TouchableOpacity
         style={{
@@ -34,7 +34,7 @@ export const ChooseYourLand: React.FC = observer(() => {
         />
 
         <View paddingV-5 paddingH-5>
-          <Text text70>MetaShop #1</Text>
+          <Text text70>MetaShop #{num}</Text>
           <View row marginT-5>
             <View row centerV padding-5 marginR-10 bg-red20 style={{ borderRadius: 7 }}>
               <EvilIcons name="location" size={15} color="white" />
@@ -85,7 +85,7 @@ export const ChooseYourLand: React.FC = observer(() => {
               Decentraland
             </Text>
           </View>
-          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard())}</ScrollView>
+          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard(num + 1))}</ScrollView>
 
           <View row centerV marginT-10 marginB-10>
             <Ionicons name="checkbox-outline" size={24} color="green" />
@@ -98,7 +98,7 @@ export const ChooseYourLand: React.FC = observer(() => {
               Facebook Metaverse
             </Text>
           </View>
-          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard())}</ScrollView>
+          <ScrollView horizontal>{[0, 1, 2, 3].map(num => renderCard(num + 5))}</ScrollView>
         </ScrollView>
       </View>
 

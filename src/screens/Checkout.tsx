@@ -15,6 +15,18 @@ export const Checkout: React.FC = observer(() => {
   const [payType, setType] = useState('Pay annually');
   const [payMethod, setMethod] = useState('Credit Card')
 
+   const renderSubitems = (amount: number, description: string, price: number) => (
+     <View row marginB-10 spread>
+       <View row>
+         <Text marginR-10 grey>
+           {amount}X
+         </Text>
+         <Text grey>{description}</Text>
+       </View>
+       <Text>${price}</Text>
+     </View>
+   );
+
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
       <View flex>
@@ -34,45 +46,18 @@ export const Checkout: React.FC = observer(() => {
           </Text>
         </View>
         <ScrollView style={{ flex: 1 }}>
-          <Text>
+          <Text marginB-40>
             Please confirm your information is correct, your shop information and shop venue on the
             metaverse can be changed afterwards.
           </Text>
-          <View row marginT-40 marginB-10 spread>
-            <View row>
-              <Text marginR-10 grey>
-                1X
-              </Text>
-              <Text grey>Basic Subscription Plan</Text>
-            </View>
-            <Text>$100</Text>
-          </View>
-          <View row marginB-10 spread>
-            <View row>
-              <Text marginR-10>1X</Text>
-              <Text>Decentraland Shop Rental</Text>
-            </View>
-            <Text>$89</Text>
-          </View>
-          <View row marginB-10 spread>
-            <View row>
-              <Text marginR-10>1X</Text>
-              <Text>Facebook Metaverse Shop Rental</Text>
-            </View>
-            <Text>$78</Text>
-          </View>
-          <View row marginB-10 spread>
-            <View row>
-              <Text marginR-10>1X</Text>
-              <Text>NFT Scanning (One off)</Text>
-            </View>
-            <Text>$30</Text>
-          </View>
+          {renderSubitems(1, 'Basic Subscription Plan', 100)}
+          {renderSubitems(1, 'Decentraland Shop Rental', 89)}
+          {renderSubitems(1, 'Facebook Metaverse Shop Rental', 78)}
+          {renderSubitems(1, 'NFT Scanning (One off)', 30)}
           <View row marginB-30 spread>
-            <Text marginR-10>Total</Text>
-            <Text>$297</Text>
+            <Text marginR-10 text70BO>Total</Text>
+            <Text text70BO>$297</Text>
           </View>
-
           <View>
             <View row centerV marginB-10>
               <RadioButton
@@ -116,7 +101,7 @@ export const Checkout: React.FC = observer(() => {
                   color: 'green',
                 }}
               >
-                $3267, 9% off
+                $3244, 9% off
               </Text>
               <Text
                 style={{
@@ -208,6 +193,7 @@ export const Checkout: React.FC = observer(() => {
                     borderColor: 'black',
                   }}
                   value="Apple Pay"
+                  
                   onPress={payMethod => setMethod('Apple Pay')}
                 />
               </View>
@@ -220,7 +206,7 @@ export const Checkout: React.FC = observer(() => {
         onPress={() => {
           // @ts-ignore
           navigation.navigate('Success');
-          console.log({payMethod}, {payType});
+          console.log({ payMethod }, { payType });
         }}
       >
         <View row bg-black centerV center paddingV-10 style={{ borderRadius: 7 }}>
@@ -236,7 +222,7 @@ export const Checkout: React.FC = observer(() => {
           </Text>
         </View>
       </TouchableOpacity>
-      <Text marginB-20 green30 marginT-10 text70>
+      <Text marginB-10 green30 marginT-6 text70>
         You won't be charged yet
       </Text>
     </View>
