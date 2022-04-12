@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
               {percentage}%
             </Text>
             <Text text100L black>
-              25000
+              25,000
             </Text>
           </View>
           <View width={'100%'} height={3} backgroundColor={'#DDDDDD'} br40>
@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
     tags: number,
     id: number,
     name: string,
-    orders: number,
+    orders: string,
     price: number,
   ) => {
     return (
@@ -188,7 +188,7 @@ export const Home: React.FC = () => {
             <Text>Visits</Text>
           </View>
           <View centerH>
-            <Text text60BO>8520</Text>
+            <Text text60BO>8,520</Text>
             <View row centerV>
               <Image
                 source={USDT}
@@ -259,8 +259,8 @@ export const Home: React.FC = () => {
             paddingHorizontal: 20,
           }}
         >
-          {renderItemCard(EveningDress, 2, 1021, 'Evening Dress', 1200, 99)}
-          {renderItemCard(ManSuit, 2, 1329, 'Man Suit', 898, 140)}
+          {renderItemCard(EveningDress, 2, 1021, 'Evening Dress', '1,200', 99)}
+          {renderItemCard(ManSuit, 2, 1329, 'Man Suit', '898', 140)}
         </ScrollView>
         {renderHeader('Statistics')}
         <TouchableOpacity style={[globalStyle.card, { marginTop: 10, marginBottom: 20 }]}>

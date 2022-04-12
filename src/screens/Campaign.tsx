@@ -216,7 +216,7 @@ export const Campaign = () => {
               People Participated: 0
             </Text>
             <Text text80R black>
-              25000
+              25,000
             </Text>
           </View>
           <View marginV-5 width={'100%'} height={6} backgroundColor={'#DDDDDD'} br50></View>
@@ -227,7 +227,7 @@ export const Campaign = () => {
             }}
           >
             <Text text80L grey30>
-              65%
+              0%
             </Text>
             <Text text80L grey30>
               Target
