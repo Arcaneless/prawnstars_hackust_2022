@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Incubator, Text, TouchableOpacity, View } from 'react-native-ui-lib';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -7,13 +7,22 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import { If } from '@kanzitelli/if-component';
-import { Camera } from 'expo-camera';
+import { Camera, PermissionStatus } from 'expo-camera';
 
 export const MakeYourNFT: React.FC = observer(() => {
   const navigation = useNavigation();
+  const [hasPermission, setHasPermission] = useState(false);
 
   const [openedSoc, setOpenedSoc] = useState(false);
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(status === PermissionStatus.GRANTED);
+    })();
+  }, []);
+  console.log('permission', hasPermission);
 
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
@@ -33,12 +42,22 @@ export const MakeYourNFT: React.FC = observer(() => {
             Make Your NFT
           </Text>
         </View>
-        <ScrollView style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
           <Text>
             Make your first NFT. Move your camera around your product, a 3D product will be
             generated from your actual product.
           </Text>
-        </ScrollView>
+          {hasPermission && (
+            <Camera
+              type={'back'}
+              style={{
+                marginVertical: 20,
+                height: '80%',
+                width: '100%',
+              }}
+            ></Camera>
+          )}
+        </View>
       </View>
       <Button
         label="Next"
