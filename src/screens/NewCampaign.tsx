@@ -14,7 +14,6 @@ export const NewCampaign: React.FC = observer(() => {
 
   const [openedSoc, setOpenedSoc] = useState(false);
   const [selectedSoc, setSelectedSoc] = useState<string | null>(null);
-
   return (
     <View flex bg-white spread paddingT-50 paddingB-60 paddingH-30>
       <View flex>
@@ -117,7 +116,7 @@ export const NewCampaign: React.FC = observer(() => {
         </ScrollView>
       </View>
       <Button
-        label="Completed"
+        label="Create"
         labelStyle={{
           fontSize: 18,
         }}
@@ -125,7 +124,8 @@ export const NewCampaign: React.FC = observer(() => {
         bg-black
         onPress={() => {
           // @ts-ignore
-          navigation.navigate('BottomTab');
+          navigation.navigate('CampaignSuccess');
+
         }}
       />
     </View>
