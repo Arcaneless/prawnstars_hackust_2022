@@ -30,6 +30,10 @@ export const Home: React.FC = () => {
       <TouchableOpacity
         activeOpacity={0.6}
         style={[globalStyle.card, { width: 220, marginRight: 20 }]}
+        onPress={() => {
+          // @ts-ignore
+          navigation.navigate('Campaign');
+        }}
       >
         <Image
           source={CampaignImg}

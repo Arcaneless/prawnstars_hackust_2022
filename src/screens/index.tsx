@@ -17,6 +17,7 @@ import { Search } from './Search';
 import { Statistics } from './Statistics';
 import { Ionicons } from '@expo/vector-icons';
 import { Settings } from './Settings';
+import { Campaign } from './Campaign';
 
 // Describe your screens here
 export type Tabs = 'Home' | 'Search' | 'Statistics' | 'Settings';
@@ -28,7 +29,8 @@ export type Screen =
   | 'Checkout'
   | 'Success'
   | 'BottomTab'
-  | 'NewCampaign';
+  | 'NewCampaign'
+  | 'Campaign';
 
 export type ModalProps = {
   ExampleModal: undefined;
@@ -181,6 +183,13 @@ const screens: ScreenLayouts = {
       ...stackDefaultOptions(),
     }),
   },
+  Campaign: {
+    name: 'Campaign',
+    component: Campaign,
+    options: () => ({
+      ...stackDefaultOptions(),
+    }),
+  },
 };
 
 // Root Navigator
@@ -199,6 +208,7 @@ export const RootNavigator = () => {
         screens.Success,
         screens.BottomTab,
         screens.NewCampaign,
+        screens.Campaign,
       ].map(screen => {
         return (
           <RootStack.Screen
