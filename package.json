@@ -38,6 +38,7 @@
     "expo-updates": "~0.11.6",
     "formik": "^2.2.9",
     "i18n-js": "^3.8.0",
+    "immer": "^9.0.12",
     "lodash": "^4.17.21",
     "mobx": "^6.4.2",
     "mobx-persist-store": "^1.0.6",
@@ -56,6 +57,7 @@
     "react-native-ui-lib": "^6.11.0",
     "react-native-web": "0.17.1",
     "rn-bounceable": "^1.1.0",
+    "use-immer": "^0.7.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -47,7 +47,7 @@ export const Home: React.FC = () => {
         />
         <View paddingH-10 paddingV-5>
           <Text color="#0085FF" text100>
-            NFT + Online
+            NFT + Offline
           </Text>
           <Text text80BO>👗 💅🏻 Flashsale Campaign - Outfit of the day </Text>
           <Text text100L grey30 numberOfLines={2}>
@@ -62,7 +62,7 @@ export const Home: React.FC = () => {
             </Text>
           </View>
           <View width={'100%'} height={3} backgroundColor={'#DDDDDD'} br40>
-            <View width={'65%'} height={'100%'} backgroundColor={'black'} />
+            <View width={'65%'} height={'100%'} backgroundColor={'black'} br40 />
           </View>
           <View
             row
