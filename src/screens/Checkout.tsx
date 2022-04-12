@@ -55,7 +55,9 @@ export const Checkout: React.FC = observer(() => {
           {renderSubitems(1, 'Facebook Metaverse Shop Rental', 78)}
           {renderSubitems(1, 'NFT Scanning (One off)', 30)}
           <View row marginB-30 spread>
-            <Text marginR-10 text70BO>Total</Text>
+            <Text marginR-10 text70BO>
+              Total
+            </Text>
             <Text text70BO>$297</Text>
           </View>
           <View>
@@ -120,7 +122,7 @@ export const Checkout: React.FC = observer(() => {
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
-                marginRight: 20,
+                marginHorizontal: 10,
                 paddingVertical: 10,
                 paddingHorizontal: 10,
                 alignContent: 'center',
@@ -147,7 +149,7 @@ export const Checkout: React.FC = observer(() => {
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
-                marginRight: 20,
+                marginHorizontal: 10,
                 paddingVertical: 10,
                 paddingHorizontal: 10,
                 alignContent: 'center',
@@ -174,7 +176,7 @@ export const Checkout: React.FC = observer(() => {
               style={{
                 borderRadius: 8,
                 borderWidth: 2,
-                marginRight: 20,
+                marginHorizontal: 10,
                 paddingVertical: 10,
                 paddingHorizontal: 10,
                 alignContent: 'center',
@@ -193,7 +195,6 @@ export const Checkout: React.FC = observer(() => {
                     borderColor: 'black',
                   }}
                   value="Apple Pay"
-                  
                   onPress={payMethod => setMethod('Apple Pay')}
                 />
               </View>
