@@ -19,7 +19,7 @@ export const Checkout: React.FC = observer(() => {
      <View row marginB-10 spread>
        <View row>
          <Text marginR-10 grey>
-           {amount}X
+           {amount}x
          </Text>
          <Text grey>{description}</Text>
        </View>
@@ -224,7 +224,7 @@ export const Checkout: React.FC = observer(() => {
         </View>
       </TouchableOpacity>
       <Text marginB-10 green30 marginT-6 text70>
-        You won't be charged yet
+        You won't be charged yet.
       </Text>
     </View>
   );
